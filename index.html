@@ -15,6 +15,13 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f1f1f1;
@@ -22,12 +29,12 @@
             line-height: 1.6;
         }
 
-        /* Header */
         header {
             background: #1c1c1c;
             color: white;
             padding: 30px 0;
             text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         header h1 {
@@ -36,13 +43,14 @@
             letter-spacing: 2px;
         }
 
-        /* Navigation Bar */
         .navbar {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 15px;
-            gap: 15px;
+            padding: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
         }
 
         .navbar a {
@@ -51,14 +59,15 @@
             font-size: 1rem;
             font-weight: 600;
             padding: 10px 15px;
+            transition: color 0.3s, background-color 0.3s;
             border-radius: 5px;
         }
 
         .navbar a:hover {
             background-color: #007bff;
+            color: #fff;
         }
 
-        /* Hero Section */
         .hero {
             text-align: center;
             background-color: #007bff;
@@ -71,127 +80,244 @@
             margin-bottom: 20px;
         }
 
-        /* Cards */
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
         .features {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            padding: 40px 20px;
+            flex-wrap: wrap;
+            padding: 50px 20px;
+            background-color: white;
         }
 
-        .card {
-            background-color: white;
-            border: 1px solid #ddd;
+        .feature-card {
+            background-color: #fff;
+            border: 2px solid #007bff;
             border-radius: 10px;
-            padding: 20px;
             width: 300px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card h3 {
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 1.5rem;
             margin-bottom: 10px;
+            color: #007bff;
         }
 
-        /* Server Info */
+        .feature-card p {
+            font-size: 1rem;
+            color: #333;
+        }
+
         .server-info {
             text-align: center;
-            margin: 40px 0;
+            background-color: #333;
+            color: white;
+            padding: 50px 20px;
         }
 
         .server-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
-        .server-info .ip {
+        .server-info .copy-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .server-info .copy-container span {
+            font-size: 1.8rem; /* Default size */
+        }
+
+        .server-info .copy-ip {
+            color: #00c853;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .copy-btn {
+            background-color: #00c853;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
             font-size: 1.2rem;
             cursor: pointer;
-            display: inline-block;
-            background: #007bff;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #009e4f;
+            transform: translateY(-2px);
+        }
+
+        #copy-success {
+            display: none;
+            color: #00c853;
             margin-top: 10px;
+            font-size: 1.2rem;
         }
 
-        .server-info .ip:hover {
-            background: #0056b3;
-        }
-
-        /* Footer */
-        footer {
+        .download-btn {
+            display: inline-block;
+            background-color: #00c853;
+            color: white;
+            font-size: 1.4rem;
+            padding: 15px 25px;
             text-align: center;
-            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            background-color: #009e4f;
+            transform: translateY(-2px);
+        }
+
+        .download-btn i {
+            margin-right: 10px;
+        }
+
+        footer {
             background-color: #1c1c1c;
             color: white;
-            margin-top: 40px;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .social-icons i {
+            font-size: 30px;
+            margin: 0 15px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons i:hover {
+            color: #007bff;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar a {
+                margin: 5px 0;
+            }
+
+            .features {
+                flex-direction: column;
+            }
+
+            .feature-card {
+                width: 100%;
+            }
+
+            .server-info .copy-container {
+                flex-direction: column;
+            }
+
+            .server-info .copy-container span {
+                font-size: 1.2rem; /* Smaller size for mobile */
+            }
+
+            .copy-btn {
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
     <header>
         <h1>The Celerity</h1>
     </header>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar">
+    <div class="navbar">
         <a href="#about">About</a>
         <a href="#features">Features</a>
-        <a href="#server-info">Server Info</a>
+        <a href="#server-info">Server Info & Modpack</a>
         <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- Hero Section -->
+    </div>
     <section class="hero">
-        <h2>Welcome to The Celerity</h2>
-        <p>The fastest and most exciting Minecraft server experience!</p>
+        <h2>Join The Ultimate Minecraft Adventure</h2>
+        <p>Explore, build, and battle on The Celerity server!</p>
     </section>
-
-    <!-- Features -->
-    <section class="features" id="features">
-        <div class="card">
-            <h3>Fast Gameplay</h3>
-            <p>Experience minimal lag with top-notch server performance.</p>
+    <section id="features" class="features">
+        <div class="feature-card">
+            <i class="fas fa-cogs"></i>
+            <h4>Custom Gameplay</h4>
+            <p>Unique features that make every session special.</p>
         </div>
-        <div class="card">
-            <h3>Fun Mods</h3>
-            <p>Explore unique mods for an enhanced experience.</p>
+        <div class="feature-card">
+            <i class="fas fa-cubes"></i>
+            <h4>Fun Mods</h4>
+            <p>A variety of mods to enhance your gameplay.</p>
         </div>
-        <div class="card">
-            <h3>Active Community</h3>
-            <p>Join a growing and friendly Minecraft player base.</p>
+        <div class="feature-card">
+            <i class="fas fa-users"></i>
+            <h4>Friendly Community</h4>
+            <p>Collaborate with players from all around the world.</p>
         </div>
     </section>
-
-    <!-- Server Info -->
-    <section class="server-info" id="server-info">
-        <h3>Server Information</h3>
-        <p>IP: <span class="ip" onclick="copyToClipboard('play.thecelerity.com')">play.thecelerity.com</span></p>
-        <button onclick="downloadModpack()">Download Modpack</button>
+    <section id="server-info" class="server-info">
+        <h3>Server Information & Modpack</h3>
+        <div class="copy-container">
+            <span>IP: <span class="copy-ip" id="copy-ip">play.theceleritymc.com</span></span>
+            <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+        </div>
+        <p id="copy-success">Copied to clipboard!</p>
+        <p>Download the modpack to join the server:</p>
+        <a href="https://example.com/modpack.zip" class="download-btn">
+            <i class="fas fa-download"></i> Download Modpack
+        </a>
     </section>
-
-    <!-- Footer -->
     <footer>
+        <p>Follow us on social media for updates:</p>
+        <div class="social-icons">
+            <a href="https://discord.com/" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
         <p>&copy; 2025 The Celerity. All rights reserved.</p>
     </footer>
-
     <script>
-        // Copy IP to clipboard
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Server IP copied to clipboard!');
+        function copyToClipboard() {
+            const ip = document.getElementById("copy-ip").textContent;
+            navigator.clipboard.writeText(ip).then(() => {
+                const successMsg = document.getElementById("copy-success");
+                successMsg.style.display = "block";
+                setTimeout(() => {
+                    successMsg.style.display = "none";
+                }, 2000);
             });
-        }
-
-        // Download Modpack
-        function downloadModpack() {
-            window.location.href = 'path/to/modpack.zip';
         }
     </script>
 </body>
 
-</html>
+                                                               </html>
