@@ -147,8 +147,7 @@
         }
 
         .server-info .copy-container span {
-            font-size: 1.8rem;
-            font-weight: bold;
+            font-size: 1.8rem; /* Default size */
         }
 
         .server-info .copy-ip {
@@ -244,6 +243,10 @@
                 flex-direction: column;
             }
 
+            .server-info .copy-container span {
+                font-size: 1.2rem; /* Smaller size for mobile */
+            }
+
             .copy-btn {
                 margin-top: 10px;
             }
@@ -301,22 +304,4 @@
             <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
         </div>
-        <p>&copy; 2025 The Celerity. All rights reserved.</p>
-    </footer>
-    <script>
-        function copyToClipboard() {
-            const ip = "play.theceleritymc.com";
-            navigator.clipboard.writeText(ip).then(() => {
-                const successMessage = document.getElementById("copy-success");
-                successMessage.style.display = "block";
-                setTimeout(() => {
-                    successMessage.style.display = "none";
-                }, 2000);
-            }).catch(err => {
-                console.error("Could not copy text: ", err);
-            });
-        }
-    </script>
-</body>
-
-    </html>
+        <p>&copy;
