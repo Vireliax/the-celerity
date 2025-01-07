@@ -20,12 +20,6 @@
             background-color: #f1f1f1;
             color: #333;
             line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body.dark-mode {
-            background-color: #1c1c1c;
-            color: #f1f1f1;
         }
 
         /* Header */
@@ -56,21 +50,12 @@
             text-decoration: none;
             font-size: 1rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
             padding: 10px 15px;
             border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s;
         }
 
         .navbar a:hover {
             background-color: #007bff;
-            transform: translateY(-2px);
-        }
-
-        .dark-mode .navbar {
-            background-color: rgba(255, 255, 255, 0.2);
         }
 
         /* Hero Section */
@@ -86,67 +71,67 @@
             margin-bottom: 20px;
         }
 
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            z-index: 1000;
-            transition: background-color 0.3s ease;
-        }
-
-        .dark-mode-toggle:hover {
-            background-color: #0056b3;
-        }
-
-        .dark-mode .dark-mode-toggle {
-            background-color: #444;
-        }
-
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #1c1c1c;
+        /* Cards */
+        .features {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            z-index: 9999;
+            gap: 20px;
+            padding: 40px 20px;
         }
 
-        .loading-screen img {
-            width: 100px;
-            animation: spin 1.5s linear infinite;
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Server Info */
+        .server-info {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .server-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .server-info .ip {
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .server-info .ip:hover {
+            background: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1c1c1c;
+            color: white;
+            margin-top: 40px;
         }
     </style>
 </head>
 
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Minecraft_diamond_pickaxe_icon.png" alt="Loading">
-    </div>
-
     <!-- Header -->
     <header>
         <h1>The Celerity</h1>
@@ -154,10 +139,10 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
-        <a href="#features"><i class="fas fa-cubes"></i> Features</a>
-        <a href="#download"><i class="fas fa-download"></i> Download</a>
-        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#server-info">Server Info</a>
+        <a href="#contact">Contact</a>
     </nav>
 
     <!-- Hero Section -->
@@ -166,22 +151,46 @@
         <p>The fastest and most exciting Minecraft server experience!</p>
     </section>
 
-    <!-- Dark Mode Toggle -->
-    <button class="dark-mode-toggle">Toggle Dark Mode</button>
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="card">
+            <h3>Fast Gameplay</h3>
+            <p>Experience minimal lag with top-notch server performance.</p>
+        </div>
+        <div class="card">
+            <h3>Fun Mods</h3>
+            <p>Explore unique mods for an enhanced experience.</p>
+        </div>
+        <div class="card">
+            <h3>Active Community</h3>
+            <p>Join a growing and friendly Minecraft player base.</p>
+        </div>
+    </section>
+
+    <!-- Server Info -->
+    <section class="server-info" id="server-info">
+        <h3>Server Information</h3>
+        <p>IP: <span class="ip" onclick="copyToClipboard('play.thecelerity.com')">play.thecelerity.com</span></p>
+        <button onclick="downloadModpack()">Download Modpack</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 The Celerity. All rights reserved.</p>
+    </footer>
 
     <script>
-        // Dark Mode Toggle
-        const darkModeToggle = document.querySelector('.dark-mode-toggle');
-        const body = document.body;
+        // Copy IP to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Server IP copied to clipboard!');
+            });
+        }
 
-        darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-        });
-
-        // Remove Loading Screen
-        window.addEventListener('load', () => {
-            document.querySelector('.loading-screen').style.display = 'none';
-        });
+        // Download Modpack
+        function downloadModpack() {
+            window.location.href = 'path/to/modpack.zip';
+        }
     </script>
 </body>
 
