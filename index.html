@@ -297,11 +297,27 @@
             <i class="fas fa-download"></i> Download Modpack
         </a>
     </section>
-    <footer id="contact">
+    <footer>
         <p>Follow us on social media for updates:</p>
         <div class="social-icons">
             <a href="https://discord.com/" target="_blank"><i class="fab fa-discord"></i></a>
             <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
         </div>
-        <p>&copy;
+        <p>&copy; 2025 The Celerity. All rights reserved.</p>
+    </footer>
+    <script>
+        function copyToClipboard() {
+            const ip = document.getElementById("copy-ip").textContent;
+            navigator.clipboard.writeText(ip).then(() => {
+                const successMsg = document.getElementById("copy-success");
+                successMsg.style.display = "block";
+                setTimeout(() => {
+                    successMsg.style.display = "none";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
